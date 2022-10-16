@@ -1,0 +1,77 @@
+.K2FilterBlock * { box-sizing: border-box; }
+.k2filter-cell {
+	float: left;
+	padding: 0 10px 10px 0;
+	position: relative;
+}
+
+.K2FilterBlock.default .chzn-container { display: none; } /* fix chozen duplicates conflict */
+
+.K2FilterBlock h3 { font-size: 17px !important; }
+
+.K2FilterBlock input.button {
+	margin-top: 10px;
+}
+
+.k2filter-table button {
+	width: 100% !important;
+	min-width: 210px;
+	padding-left: 8px;
+}
+
+.k2filter-cell select { width: 100%; }
+
+.K2FilterBlock .k2filter-field-slider { font-size: 13px; }
+.K2FilterBlock .k2filter-slider-amount {
+	border: 0; color: #f6931f; 
+	width: 100%; background: transparent;
+	text-align: center; height: auto !important;
+	padding: 2px;
+	border-radius: 4px;
+	text-shadow: 1px 0px 1px #ccc;
+	background: none !important;
+    box-shadow: none !important;
+}
+
+.K2FilterClear {
+	display: block;
+	clear: both;
+}
+
+.K2FilterBlock label { display: block !important; margin: 0 0 5px 20px; font-weight: normal !important; }
+.K2FilterBlock .k2filter-field-radio input, 
+.K2FilterBlock .k2filter-field-multi input,
+.K2FilterBlock .k2filter-field-category-checkbox input,
+.K2FilterBlock .k2filter-field-tag-multi input { position: absolute; margin: 2px 3px 0; }
+
+.K2FilterBlock a.uncheck {
+	margin-top: 5px !important;
+}
+
+.K2FilterBlock .dynoloader { position: absolute; top: 30px; right: 30px; }
+
+.K2FilterBlock input.datepicker, .K2FilterBlock input.range{ display: inline; max-width: 110px; box-sizing: border-box; }
+
+.K2FilterBlock .k2filter-keyword .inputbox { width: 100%; }
+.K2FilterBlock .inputbox { height: auto !important; }
+
+.K2FilterBlock .label { margin-right: 2px; }
+
+.K2FilterBlock .acounter { margin-top: 10px; }
+.K2FilterBlock button.ui-multiselect { padding: 6px 10px; }
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { font-weight: normal !important; font-size: 16px !important; }
+.ui-multiselect-filter input { width: 90px !important; margin-left: 0px !important; border: 1px solid #999 !important; }
+.ui-multiselect-checkboxes label { position: relative; }
+.ui-multiselect-checkboxes label input { position: absolute !important; top: 1px !important; left: 6px; outline: none !important; }
+.ui-multiselect-checkboxes label span { display: block; margin-left: 23px; }
+.ui-multiselect-checkboxes label.ui-state-hover,
+.ui-multiselect-checkboxes label { font-weight: normal; }
+.ui-multiselect-header { margin-bottom: 7px !important; }
+#ui-datepicker-div { z-index: 10000 !important; }
+.ui-autocomplete { z-index: 100000 !important; }
+
+.k2filter-responsive .k2filter-cell { width: 250px; min-height: 80px; margin-left: 20px; }
+.k2filter-responsive input.submit { margin-left: 20px; }
+
+.ui-multiselect-filter input { line-height: inherit; }

@@ -1,0 +1,44 @@
+Feb 2021
+	* Added J2Store price filter
+May 2020
+	* Selectize theme clear button fix
+Aug 2019
+	* Bug fixes
+Jun 2019
+	* Added compatibility with K2 multiple categories plugin (web357)
+May 2019
+	* Added conditionally search for Keyword (Item all in one) field between word in search results phrase. Operators AND (&), OR
+Feb 2019
+	* Added compatibility with Inceptive K2 Multiple Categories plugin
+Nov 2018
+	* Added All/Any Filter match field type
+Oct 2018
+	* Added ui style selector for default template
+Sep 2018
+	* Added a parameter for Auto fetch extrafields filters list based on current category
+Aug 2018
+	* Added new module template style based on selectize.js
+	* filter.css style moved to template's folder
+	* Added Keyword suggestions from tags and items title
+
+v.1.5.5 2017-02-10 Andrey Miasoedov <molotow11@gmail.com>
+	* Bug fixes;
+	* PHP 7.1 compatibility.
+
+v1.5.4 2016-01-11 Andrey Miasoedov <molotow11@gmail.com>
+	* Template changes;
+	* Some other improvements.
+
+v1.5.3 2015-10-30 Andrey Miasoedov <molotow11@gmail.com>
+	* Template changes;
+	* Added new fields connection mode.
+
+v1.5.1 2015-05-03 Andrey Miasoedov <molotow11@gmail.com>
+	* Added new function - Dynamic values in select boxes;
+	  Useful only with ajax search. Updates all values in the filters based on selected value in some other field;
+	* Changed filters manager into the backend and now it is easier (You need to re-configure your filter fields!).
+	  Now it is single select box - "Select filter fields", which combines 'Filter type', 'Select extra field' and 'Order' params.
+	* Ajax search now updates url with history.pushState();
+	* Added new param for change ajax results container;
+	* Responsive filter module layout, by defualt now. 'Number of cols' param should be set to '0';
+	* $json->decode function replaced with native php function json_decode (increase a speed).

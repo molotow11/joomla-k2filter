@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<extension type="package" version="3.0" method="upgrade">
+	<name>K2 Filter and Search module Package</name>
+	<author>Andrey Miasoedov</author>
+	<creationDate>Feb 2021</creationDate>
+	<packagename>k2filter</packagename>
+	<version>1.5.8</version>
+	<packager>Joomcar Team</packager>
+	<packagerurl>http://joomcar.net</packagerurl>
+	<description>K2 Filter and Search module package</description>
+	<scriptfile>pkg_script.php</scriptfile>
+	<files>
+		<file type="module" id="k2filter" client="site">mod_k2_filter.zip</file>
+		<file type="plugin" id="k2filter" group="system">plg_k2filter.zip</file>
+	</files>
+	<updateservers>
+		<server name="K2 Filter and Search module Package" type="collection">http://joomcar.net/jed_update/k2filter/package.xml</server>
+	</updateservers>
+</extension>

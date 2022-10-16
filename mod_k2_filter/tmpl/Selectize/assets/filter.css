@@ -1,0 +1,79 @@
+.K2FilterBlock * { box-sizing: border-box; }
+.k2filter-cell {
+	float: left;
+	padding: 0 10px 10px 0;
+	position: relative;
+}
+
+.K2FilterBlock.selectize .chzn-container { display: none; } /* fix chozen duplicates conflict */
+.K2FilterBlock.selectize div[class*=select] > .ui-widget  { display: none; } /* fix jquery-ui multiselect duplicates conflict */
+
+.K2FilterBlock h3 { font-size: 16px; }
+
+.K2FilterBlock input.button {
+	margin-top: 10px;
+}
+
+.k2filter-table button {
+	width: 100% !important;
+	min-width: 210px;
+	padding-left: 8px;
+}
+
+.k2filter-cell select { width: 100%; }
+
+.K2FilterBlock .k2filter-field-slider { font-size: 13px; }
+.K2FilterBlock .k2filter-slider-amount {
+	border: 0; color: #f6931f; 
+	width: 100%; background: transparent;
+	text-align: center; height: auto !important;
+	padding: 2px;
+	border-radius: 4px;
+	text-shadow: 1px 0px 1px #ccc;
+	background: none !important;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.K2FilterClear {
+	display: block;
+	clear: both;
+}
+
+.K2FilterBlock label { display: block !important; margin: 0 0 5px 20px; font-weight: normal !important; }
+.K2FilterBlock .k2filter-field-radio input, 
+.K2FilterBlock .k2filter-field-multi input,
+.K2FilterBlock .k2filter-field-category-checkbox input,
+.K2FilterBlock .k2filter-field-tag-multi input { position: absolute; margin: 2px 3px 0; }
+
+.K2FilterBlock a.uncheck {
+	margin-top: 5px !important;
+}
+
+.K2FilterBlock .dynoloader {
+	position: absolute;
+	top: 15px;
+	right: 30px;
+}
+
+.K2FilterBlock input.datepicker, .K2FilterBlock input.range{ display: inline; max-width: 110px; box-sizing: border-box; }
+
+.K2FilterBlock .k2filter-keyword .inputbox { width: 100%; }
+.K2FilterBlock .inputbox { height: auto !important; }
+
+.K2FilterBlock .label { margin-right: 2px; }
+
+.K2FilterBlock .acounter { margin-top: 10px; }
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { font-weight: normal !important; font-size: 16px !important; }
+#ui-datepicker-div { z-index: 10000 !important; }
+
+.k2filter-responsive .k2filter-cell { width: 250px; min-height: 80px; margin-left: 20px; }
+.k2filter-responsive input.submit { margin-left: 20px; }
+
+/* selectize added */
+.K2FilterBlock .selectize-input, .K2FilterBlock input.inputbox { padding: 6px 8px !important; }
+div.ui-slider { margin: 0 10px; }
+.K2FilterBlock .k2filter-slider-amount { border: none; outline: none; box-shadow: none; margin: 0; color: #555; text-shadow: none; }
+.K2FilterBlock .ui-widget-header { background: #eee !important; }
+.K2FilterBlock .ui-state-hover, .K2FilterBlock .ui-state-focus { background: #eee !important; border: 1px solid #ccc !important; }
+.K2FilterBlock .selectize-input.has-items > input { display: none !important; }

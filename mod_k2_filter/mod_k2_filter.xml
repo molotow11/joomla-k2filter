@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" version="2.5" method="upgrade">
+	<name>K2 Filter &amp; Search module</name>
+	<author>Andrey Miasoedov</author>
+	<creationDate>Aug 2018</creationDate>
+	<copyright></copyright>
+	<authorEmail>molotow11@gmail.com</authorEmail>
+	<authorUrl>http://joomcar.net</authorUrl>
+	<version>1.5.7</version>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>Thank you for installing the K2 Extra fields Filter and Search module</description>
+	
+	<files>
+		<filename module="mod_k2_filter">mod_k2_filter.php</filename>
+		<filename>helper.php</filename>
+		<filename>ajax.php</filename>
+		<filename>index.html</filename>
+		<folder>includes</folder>
+		<folder>tmpl</folder>
+		<folder>assets</folder>
+	</files>
+    
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_k2_filter.ini</language>
+		<language tag="fr-FR">language/fr-FR.mod_k2_filter.ini</language>
+		<language tag="it-IT">language/it-IT.mod_k2_filter.ini</language>
+		<language tag="pl-PL">language/pl-PL.mod_k2_filter.ini</language>
+		<language tag="ru-RU">language/ru-RU.mod_k2_filter.ini</language>
+		<language tag="uk-UA">language/uk-UA.mod_k2_filter.ini</language>
+		<language tag="zh-CN">language/zh-CN.mod_k2_filter.ini</language>
+		<language tag="de-DE">language/de-DE.mod_k2_filter.ini</language>
+		<language tag="hu-HU">language/hu-HU.mod_k2_filter.ini</language>
+		<language tag="fa-IR">language/fa-IR.mod_k2_filter.ini</language>
+		<language tag="el-GR">language/el-GR.mod_k2_filter.ini</language>
+		<language tag="es-ES">language/es-ES.mod_k2_filter.ini</language>
+        <language tag="pt-PT">language/pt-PT.mod_k2_filter.ini</language>
+		<language tag="pt-BR">language/pt-BR.mod_k2_filter.ini</language>
+	</languages>	
+ 
+  	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/modules/mod_k2_filter/includes/">
+				<field name="" type="header" default="MOD_K2_FILTER_MAIN_PARAMS_HEADER" label="" description=""/>
+				
+				<field name="moduleclass_sfx" type="text" default="" label="MOD_K2_FILTER_MODULE_CLASS_SUFFIX" description="MOD_K2_FILTER_PARAMMODULECLASSSUFFIX" />
+				
+				<field name="getTemplate" type="moduletemplate" modulename="mod_k2_filter" default="Default" label="MOD_K2_FILTER_SELECT_SUBTEMPLATE" description=""/>
+				
+				<field name="uiTheme" type="list" default="ui-lightness" label="MOD_K2_FILTER_UITHEME">
+					<option value="ui-lightness">lightness</option>
+					<option value="smoothness">smoothness</option>
+					<option value="ui-darkness">darkness</option>
+					<option value="cupertino">cupertino</option>
+					<option value="flick">flick</option>
+					<option value="humanity">humanity</option>
+					<option value="pepper-grinder">pepper-grinder</option>
+				</field>
+				
+				<field name="page_heading" type="text" default="Search" label="MOD_K2_FILTER_PAGE_TITLE" description="MOD_K2_FILTER_PARAMPAGETITLE" />
+				
+				<field name="descr" type="textarea" default="" label="MOD_K2_FILTER_FORM_DESC" description="MOD_K2_FILTER_FORM_DESC_DESC" rows="7" cols="25" />
+				
+				<field name="resultf" type="text" default="Search results" label="MOD_K2_FILTER_RESULT_PHRASE" description="MOD_K2_FILTER_RESULT_PHRASE_DESC" />
+				
+				<field name="noresult" type="text" default="No results found" label="MOD_K2_FILTER_PHRASE_NO_RESULT" description="MOD_K2_FILTER_PHRASE_NO_RESULT_DESC" />
+
+				<field name="" type="header" default="MOD_K2_FILTER_CATEGORY_REST_HEADER" label="" description=""/>
+				
+				<field name="restrict" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_RESTRICT_CAT" description="MOD_K2_FILTER_RESTRICT_CAT_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>
+				
+				<field name="restmode" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_RESTRICTION_MODE" description="MOD_K2_FILTER_RESTRICTION_MODE_DESC">
+					<option value="0">MOD_K2_FILTER_RESTRICTION_MODE_CATID</option>
+					<option value="1">MOD_K2_FILTER_RESTRICTION_MODE_AUTO</option>
+				</field>
+				
+				<field name="restcat" type="text" default="1" label="MOD_K2_FILTER_RESTRICTION_CAT_ID" description="MOD_K2_FILTER_RESTRICTION_CAT_ID_DESC" />
+				
+				<field name="restsub" type="radio" class="btn-group" default="1" label="MOD_K2_FILTER_RESTRICTION_CAT_SUB" description="MOD_K2_FILTER_RESTRICTION_CAT_SUB_DESC">
+					<option value="1">MOD_K2_FILTER_YES</option>
+					<option value="0">MOD_K2_FILTER_NO</option>
+				</field>
+				
+				<field name="" type="header" default="MOD_K2_FILTER_FILTER_PARAMS_HEADER" label="" description=""/>
+				
+				<field name="filters" type="filters" label="MOD_K2_FILTER_SELECT_FIELDS" description="MOD_K2_FILTER_SELECT_FIELDS_DESC" default="" />
+				
+				<field name="" type="header" default="MOD_K2_FILTER_CONNECTED_FIELDS_HEADER" label="" description=""/>
+				
+				<field name="connected_fields_type" type="radio" class="btn-group" default="mass" label="MOD_K2_FILTER_CONNECTED_FIELDS_TYPE" description="MOD_K2_FILTER_CONNECTED_FIELDS_TYPE_DESC">
+					<option value="mass">MOD_K2_FILTER_CONNECTED_FIELDS_TYPE_MASS</option>
+					<option value="single">MOD_K2_FILTER_CONNECTED_FIELDS_TYPE_SINGLE</option>
+				</field>
+				
+				<field name="connected_fields" type="textarea" default="" label="MOD_K2_FILTER_CONNECTED_FIELDS" description="MOD_K2_FILTER_CONNECTED_FIELDS_DESC" rows="5" cols="40" />
+				<field name="connected_show_all" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_CONNECTED_SHOWALL" description="MOD_K2_FILTER_CONNECTED_SHOWALL_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>
+				
+				<field name="" type="header" default="" label="" description=""/>
+				
+				<field name="cols" type="text" default="0" size="5" label="MOD_K2_FILTER_NUMBER_OF_COLS" description="MOD_K2_FILTER_NUMBER_OF_COLS_DESC" />
+				
+				<field name="elems" type="text" default="" size="5" label="MOD_K2_FILTER_NUMBER_OF_ELEMS" description="MOD_K2_FILTER_NUMBER_OF_ELEMS_DESC" />
+
+				<field name="showtitles" type="radio" class="btn-group" default="1" label="MOD_K2_FILTER_SHOW_TITLES" description="MOD_K2_FILTER_SHOW_TITLES_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>
+				<field name="button" type="radio" class="btn-group" default="1" label="MOD_K2_FILTER_SUBMIT_BUTTON_SHOW" description="MOD_K2_FILTER_SUBMIT_BUTTON_SHOW_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>
+				<field name="button_text" type="text" default="" label="MOD_K2_FILTER_BUTTON_TEXT" description="MOD_K2_FILTER_BUTTON_TEXT_DESC" />
+				<field name="clear_btn" type="radio" class="btn-group" default="1" label="MOD_K2_FILTER_CLEAR_BUTTON_SHOW" description="MOD_K2_FILTER_CLEAR_BUTTON_SHOW_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>
+				<field name="acounter" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_ACOUNTER_SHOW" description="MOD_K2_FILTER_ACOUNTER_SHOW_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>				
+				<field name="onchange" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_SUBMIT_ON_CHANGE" description="MOD_K2_FILTER_SUBMIT_ON_CHANGE_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>				
+				<field name="searchstat" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_SEARCH_STAT" description="MOD_K2_FILTER_SEARCH_STAT_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>
+				<field name="acompleter" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_AUTO_COMPLETER" description="MOD_K2_FILTER_AUTO_COMPLETER_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>
+				<field name="allrequired" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_ALL_REQUIRED" description="">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>
+				<field name="dynobox" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_DYNAMIC_SELECTS" description="MOD_K2_FILTER_DYNAMIC_SELECTS_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>
+				
+				<field name="item_navigation" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_ITEM_NAVIGATION">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>
+
+				<field name="autofetch" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_AUTOFETCH" description="MOD_K2_FILTER_AUTOFETCH_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>
+
+				<field name="" type="header" default="MOD_K2_FILTER_ORDERING" label="" description=""/>
+				
+				<field name="ordering" type="radio" class="btn-group" default="1" label="MOD_K2_FILTER_SHOW_ORDERING" description="MOD_K2_FILTER_SHOW_ORDERING_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>	
+				
+				<field name="ordering_default" type="orderingdefault" default="id" label="MOD_K2_FILTER_ORDERING_DEFAULT" description="MOD_K2_FILTER_ORDERING_DEFAULT_DESC" />
+				
+				<field name="ordering_default_method" type="radio" class="btn-group" default="asc" label="MOD_K2_FILTER_ORDERING_DEFAULT_METHOD" description="MOD_K2_FILTER_ORDERING_DEFAULT_METHOD_DESC">
+					<option value="asc">MOD_K2_FILTER_ASC</option>
+					<option value="desc">MOD_K2_FILTER_DESC</option>
+				</field>
+				
+				<field name="ordering_extra" type="radio" class="btn-group" default="1" label="MOD_K2_FILTER_ORDERING_EXTRA" description="MOD_K2_FILTER_ORDERING_EXTRA_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>	
+				
+				<field name="ordering_extra_exclude" type="text" default="" label="MOD_K2_FILTER_ORDERING_EXTRA_EXCLUDE" description="MOD_K2_FILTER_ORDERING_EXTRA_EXCLUDE_DESC" />
+				
+				<field name="" type="header" default="MOD_K2_FILTER_RESULTS_ITEMID" label="" description=""/>
+				<field name="itemidv" type="radio" class="btn-group" default="0" label="MOD_K2_FILTER_RESULTS_ITEMID_TYPE" description="">
+					<option value="0">MOD_K2_FILTER_RESULTS_ITEMID_TYPE_AUTO</option>
+					<option value="1">MOD_K2_FILTER_RESULTS_ITEMID_TYPE_SELECTED</option>
+				</field>
+				<field name="itemid" type="menuitem" default="" label="MOD_K2_FILTER_RESULTS_ITEMID_SELECT" description="MOD_K2_FILTER_RESULTS_ITEMID_DESC" />
+				
+				<field name="" type="header" default="MOD_K2_FILTER_RESULTS_TEMPLATE" label="" description=""/>
+				<field name="results_template" type="list" default="0" label="MOD_K2_FILTER_RESULTS_TEMPLATE" description="MOD_K2_FILTER_RESULTS_TEMPLATE_DESC">
+					<option value="0">MOD_K2_FILTER_RESULTS_TEMPLATE_GENERIC</option>
+					<option value="1">MOD_K2_FILTER_RESULTS_TEMPLATE_GENERIC_TABLE</option>
+					<option value="2">MOD_K2_FILTER_RESULTS_TEMPLATE_CATEGORY</option>
+				</field>
+				<field name="template_selector" type="radio" class="btn-group" default="1" label="MOD_K2_FILTER_TEMPLATE_SELECTOR" description="">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>	
+				<field name="ajax_results" type="radio" class="btn-group" default="1" label="MOD_K2_FILTER_AJAX_RESULTS" description="MOD_K2_FILTER_AJAX_RESULTS_DESC">
+					<option value="0">MOD_K2_FILTER_NO</option>
+					<option value="1">MOD_K2_FILTER_YES</option>
+				</field>	
+				<field name="ajax_container" type="text" default=".results_container" label="MOD_K2_FILTER_AJAX_CONTAINER" description="MOD_K2_FILTER_AJAX_CONTAINER_DESC" />
+
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="cache" type="list" default="1" label="MOD_K2_FILTER_CACHING" description="MOD_K2_FILTER_CACHING_DESC">
+					<option value="1">MOD_K2_FILTER_USE_GLOBAL</option>
+					<option value="0">MOD_K2_FILTER_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="MOD_K2_FILTER_CACHE_TIME_LABEL" description="MOD_K2_FILTER_CACHE_TIME_DESC"/>
+			</fieldset>
+		</fields>
+	</config>	  
+</extension>
