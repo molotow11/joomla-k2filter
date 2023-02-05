@@ -272,7 +272,9 @@ class K2ModelItemFilter extends K2Model
 		
 		)
 		{
-			if (!empty($item->created_by_alias)){
+			if (!empty($item->created_by_alias)
+				&& $item->author
+			) {
 				$item->author->name = $item->created_by_alias;
 				$item->author->avatar = K2HelperUtilities::getAvatar('alias');
 				$item->author->link = JURI::root();

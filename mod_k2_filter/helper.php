@@ -148,7 +148,7 @@ class modK2FilterHelper {
 					foreach($tagCategory as $tagCategoryID){
 						$categories[] = $tagCategoryID;
 						if($params->get('restsub')){
-							$children = modK2FilterHelper::getCategoryChildren($tagCategoryID);
+							$children = self::getCategoryChildren($tagCategoryID);
 							$categories = @array_merge($categories, $children);
 						}
 					}
@@ -176,7 +176,7 @@ class modK2FilterHelper {
 					foreach($tagCategory as $tagCategoryID){
 						$categories[] = $tagCategoryID;
 						if($params->get('restsub')){
-							$children = modK2FilterHelper::getCategoryChildren($tagCategoryID);
+							$children = self::getCategoryChildren($tagCategoryID);
 							$categories = @array_merge($categories, $children);
 						}
 					}
@@ -250,7 +250,7 @@ class modK2FilterHelper {
 					foreach($tagCategory as $tagCategoryID){
 						$categories[] = $tagCategoryID;
 						if($params->get('restsub')){
-							$children = modK2FilterHelper::getCategoryChildren($tagCategoryID);
+							$children = self::getCategoryChildren($tagCategoryID);
 							$categories = @array_merge($categories, $children);
 						}
 					}
@@ -278,7 +278,7 @@ class modK2FilterHelper {
 					foreach($tagCategory as $tagCategoryID){
 						$categories[] = $tagCategoryID;
 						if($params->get('restsub')){
-							$children = modK2FilterHelper::getCategoryChildren($tagCategoryID);
+							$children = self::getCategoryChildren($tagCategoryID);
 							$categories = @array_merge($categories, $children);
 						}
 					}
@@ -902,7 +902,7 @@ class modK2FilterHelper {
 			if($item->extra_fields) {
 				$extras = json_decode($item->extra_fields);				
 				foreach($extras as $field) {
-					if($field->id == $id && trim($field->value) != '') {
+					if($field->id == $id && $field->value != '') {
 						if($field_type == 'multipleSelect' || $field_type == 'select') {
 							$extraVals = modK2FilterHelper::getExtraValsByIndexes($id, $field->value);
 							$values = array_merge($values, $extraVals);

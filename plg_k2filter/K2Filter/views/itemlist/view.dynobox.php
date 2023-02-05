@@ -60,9 +60,9 @@ class K2ViewItemlist extends K2View {
 								$val = strip_tags(trim($val));
 								$filter_vals[$k][] = $val;
 							}
+							$filter_vals[$k] = array_values(array_unique($filter_vals[$k]));
+							natsort($filter_vals[$k]);
 						}
-						$filter_vals[$k] = array_values(array_unique($filter_vals[$k]));
-						natsort($filter_vals[$k]);
 					}
 				}
 				
@@ -70,6 +70,7 @@ class K2ViewItemlist extends K2View {
 				$tags = $model->getItemTags($item->id);
 				foreach($filter_fields as $k=>$field) {
 					if($field == 'category_select' || $field == 'category_multiple_select') {
+						$filter_vals['categories'] = Array();
 						$filter_vals['categories'][] = $item->catid;
 						//added for additional categories plugin
 						if (JPluginHelper::isEnabled('k2', 'k2additonalcategories')) {
@@ -86,6 +87,7 @@ class K2ViewItemlist extends K2View {
 						$filter_vals['categories'] = array_values(array_unique($filter_vals['categories']));
 					}
 					if($field == 'tag_select' || $field == 'tag_multi_select') {
+						$filter_vals['tags'] = Array();
 						foreach($tags as $tag) {
 							$filter_vals['tags'][] = $tag->name;
 						}

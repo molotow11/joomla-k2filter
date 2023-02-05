@@ -123,7 +123,7 @@ class K2ModelItemlistfilter extends K2Model {
 						if($restsub == 1) {
 							$query .= " AND ( ";
 							foreach($restcat as $kr => $restcatid) {
-								$restsubs = K2ModelItemListFilter::getCategoryTree($restcatid);
+								$restsubs = self::getCategoryTree($restcatid);
 								foreach($restsubs as $k => $rests) {
 									$query .= "i.catid = " . $rests;
 									//added for additional categories plugin
@@ -173,7 +173,7 @@ class K2ModelItemlistfilter extends K2Model {
 						$catids = explode(",", $restcata);
 						if($restsub == 1) {
 							foreach($restcata as $catid) {
-								$restsubs = K2ModelItemListFilter::getCategoryTree($catid);
+								$restsubs = self::getCategoryTree($catid);
 							}
 						}
 						
@@ -212,7 +212,7 @@ class K2ModelItemlistfilter extends K2Model {
 					foreach($catid as $k=>$cid) {						
 						array_push($catids, (int)$cid);
 						if($moduleParams->restsub) {
-							$restsubs = K2ModelItemListFilter::getCategoryTree($catid);
+							$restsubs = self::getCategoryTree($catid);
 							if($restsubs) {
 								$catids = array_merge($catids, $restsubs);
 							}
@@ -264,7 +264,7 @@ class K2ModelItemlistfilter extends K2Model {
 									}
 								}
 								
-								$query .= K2ModelItemListFilter::prepareFilterArray($word, $badchars, 0, 0, 0, $myfield, $i, 0);
+								$query .= self::prepareFilterArray($word, $badchars, 0, 0, 0, $myfield, $i, 0);
 								
 								if(($k+1) == count($search)
 									|| JRequest::getVar("condition_search".$i) == "AND"
@@ -295,7 +295,7 @@ class K2ModelItemlistfilter extends K2Model {
 									if($restsub == 1) {
 										$myquery .= " AND ( ";
 										foreach($restcat as $kr => $restcatid) {
-											$restsubs = K2ModelItemListFilter::getCategoryTree($restcatid);
+											$restsubs = self::getCategoryTree($restcatid);
 											foreach($restsubs as $k => $rests) {
 												$myquery .= "catid = " . $rests;
 												if($k+1 < sizeof($restsubs))
@@ -325,7 +325,7 @@ class K2ModelItemlistfilter extends K2Model {
 									$catids = explode(",", $restcata);
 									if($restsub == 1) {
 										foreach($restcata as $catid) {
-											$restsubs = K2ModelItemListFilter::getCategoryTree($catid);
+											$restsubs = self::getCategoryTree($catid);
 										}
 									}
 									
@@ -386,7 +386,7 @@ class K2ModelItemlistfilter extends K2Model {
 									if($restsub == 1) {
 										$myquery .= " AND ( ";
 										foreach($restcat as $kr => $restcatid) {
-											$restsubs = K2ModelItemListFilter::getCategoryTree($restcatid);
+											$restsubs = self::getCategoryTree($restcatid);
 											foreach($restsubs as $k => $rests) {
 												$myquery .= "catid = " . $rests;
 												if($k+1 < sizeof($restsubs))
@@ -416,7 +416,7 @@ class K2ModelItemlistfilter extends K2Model {
 									$catids = explode(",", $restcata);
 									if($restsub == 1) {
 										foreach($restcata as $catid) {
-											$restsubs = K2ModelItemListFilter::getCategoryTree($catid);
+											$restsubs = self::getCategoryTree($catid);
 										}
 									}
 									
@@ -465,7 +465,7 @@ class K2ModelItemlistfilter extends K2Model {
 																$count = sizeof($search);
 																require_once (JPATH_SITE.DS.'modules'.DS.'mod_k2_filter'.DS.'helper.php');
 																$myfields = (modK2FilterHelper::extractExtraFields(modK2FilterHelper::pull($i,'')));                                       
-							$query .= K2ModelItemListFilter::prepareFilterArray($search, $badchars, 0, 1, $count, $myfields, $i, 0);
+							$query .= self::prepareFilterArray($search, $badchars, 0, 1, $count, $myfields, $i, 0);
 														}
 						
 														preg_match('/^slider([0-9]+)$/', $param, $matches);
@@ -485,7 +485,7 @@ class K2ModelItemlistfilter extends K2Model {
 																		}
 								
 								$range = 0;                                            
-																		$sql = K2ModelItemListFilter::prepareFilterArray($slider_search, $badchars, 1, 0, 0, $myfields, $i, $range);
+																		$sql = self::prepareFilterArray($slider_search, $badchars, 1, 0, 0, $myfields, $i, $range);
 																		if (! empty($sql)) {
 																						$query .= $sql;
 																		} else {
@@ -511,7 +511,7 @@ class K2ModelItemlistfilter extends K2Model {
 																		}
 																		
 								$range = 1;
-																		$sql = K2ModelItemListFilter::prepareFilterArray($slider_range, $badchars, 1, 0, 0, $myfields, $i, $range);
+																		$sql = self::prepareFilterArray($slider_range, $badchars, 1, 0, 0, $myfields, $i, $range);
 																		if (!empty($sql)) {
 																						$query .= $sql;
 																		}
@@ -549,7 +549,7 @@ class K2ModelItemlistfilter extends K2Model {
 						$flabel = JRequest::getVar('flabel');
 						if($flabel) {
 							$flabel = implode(" ", $flabel);
-							$query .= K2ModelItemListFilter::prepareSearch($flabel);
+							$query .= self::prepareSearch($flabel);
 						}
 					
 						///tag filter
@@ -1089,10 +1089,10 @@ class K2ModelItemlistfilter extends K2Model {
 					}
 
 					if($order_method == "asc") {
-						$extrasort = K2ModelItemlistfilter::array_orderby($extrasort, 'extraVal', SORT_ASC, 'itemTitle', SORT_ASC);
+						$extrasort = self::array_orderby($extrasort, 'extraVal', SORT_ASC, 'itemTitle', SORT_ASC);
 					}
 					else {
-						$extrasort = K2ModelItemlistfilter::array_orderby($extrasort, 'extraVal', SORT_DESC, 'itemTitle', SORT_ASC);
+						$extrasort = self::array_orderby($extrasort, 'extraVal', SORT_DESC, 'itemTitle', SORT_ASC);
 					}
 																
 					$rows = Array();
@@ -1226,7 +1226,7 @@ class K2ModelItemlistfilter extends K2Model {
 						if($restsub == 1) {
 							$query .= " AND ( ";
 							foreach($restcat as $kr => $restcatid) {
-								$restsubs = K2ModelItemListFilter::getCategoryTree($restcatid);
+								$restsubs = self::getCategoryTree($restcatid);
 								foreach($restsubs as $k => $rests) {
 									$query .= "i.catid = " . $rests;
 									//added for additional categories plugin
@@ -1276,7 +1276,7 @@ class K2ModelItemlistfilter extends K2Model {
 						$catids = explode(",", $restcata);
 						if($restsub == 1) {
 							foreach($restcata as $catid) {
-								$restsubs = K2ModelItemListFilter::getCategoryTree($catid);
+								$restsubs = self::getCategoryTree($catid);
 							}
 						}
 						
@@ -1313,7 +1313,7 @@ class K2ModelItemlistfilter extends K2Model {
 					foreach($catid as $k=>$cid) {						
 						array_push($catids, (int)$cid);
 						if($moduleParams->restsub) {
-							$restsubs = K2ModelItemListFilter::getCategoryTree($catid);
+							$restsubs = self::getCategoryTree($catid);
 							if($restsubs) {
 								$catids = array_merge($catids, $restsubs);
 							}
@@ -1371,7 +1371,7 @@ class K2ModelItemlistfilter extends K2Model {
 											}
 										}
 										
-										$query .= K2ModelItemListFilter::prepareFilterArray($word, $badchars, 0, 0, 0, $myfield, $i, 0);
+										$query .= self::prepareFilterArray($word, $badchars, 0, 0, 0, $myfield, $i, 0);
 										
 										if(($k+1) == count($search)
 											|| JRequest::getVar("condition_search".$i) == "AND"
@@ -1402,7 +1402,7 @@ class K2ModelItemlistfilter extends K2Model {
 											if($restsub == 1) {
 												$myquery .= " AND ( ";
 												foreach($restcat as $kr => $restcatid) {
-													$restsubs = K2ModelItemListFilter::getCategoryTree($restcatid);
+													$restsubs = self::getCategoryTree($restcatid);
 													foreach($restsubs as $k => $rests) {
 														$myquery .= "catid = " . $rests;
 														if($k+1 < sizeof($restsubs))
@@ -1432,7 +1432,7 @@ class K2ModelItemlistfilter extends K2Model {
 											$catids = explode(",", $restcata);
 											if($restsub == 1) {
 												foreach($restcata as $catid) {
-													$restsubs = K2ModelItemListFilter::getCategoryTree($catid);
+													$restsubs = self::getCategoryTree($catid);
 												}
 											}
 											
@@ -1493,7 +1493,7 @@ class K2ModelItemlistfilter extends K2Model {
 											if($restsub == 1) {
 												$myquery .= " AND ( ";
 												foreach($restcat as $kr => $restcatid) {
-													$restsubs = K2ModelItemListFilter::getCategoryTree($restcatid);
+													$restsubs = self::getCategoryTree($restcatid);
 													foreach($restsubs as $k => $rests) {
 														$myquery .= "catid = " . $rests;
 														if($k+1 < sizeof($restsubs))
@@ -1523,7 +1523,7 @@ class K2ModelItemlistfilter extends K2Model {
 											$catids = explode(",", $restcata);
 											if($restsub == 1) {
 												foreach($restcata as $catid) {
-													$restsubs = K2ModelItemListFilter::getCategoryTree($catid);
+													$restsubs = self::getCategoryTree($catid);
 												}
 											}
 											
@@ -1572,7 +1572,7 @@ class K2ModelItemlistfilter extends K2Model {
                                     $count = sizeof($search);
                                     require_once (JPATH_SITE.DS.'modules'.DS.'mod_k2_filter'.DS.'helper.php');
                                     $myfields = (modK2FilterHelper::extractExtraFields(modK2FilterHelper::pull($i,'')));                                       
-									$query .= K2ModelItemListFilter::prepareFilterArray($search, $badchars, 0, 1, $count, $myfields, $i, 0);
+									$query .= self::prepareFilterArray($search, $badchars, 0, 1, $count, $myfields, $i, 0);
                                 }
 								
                                 preg_match('/^slider([0-9]+)$/', $param, $matches);
@@ -1592,7 +1592,7 @@ class K2ModelItemlistfilter extends K2Model {
                                         }
 										
 										$range = 0;                                            
-                                        $sql = K2ModelItemListFilter::prepareFilterArray($slider_search, $badchars, 1, 0, 0, $myfields, $i, $range);
+                                        $sql = self::prepareFilterArray($slider_search, $badchars, 1, 0, 0, $myfields, $i, $range);
                                         if (! empty($sql)) {
                                                 $query .= $sql;
                                         } else {
@@ -1618,7 +1618,7 @@ class K2ModelItemlistfilter extends K2Model {
                                         }
                                         
 										$range = 1;
-                                        $sql = K2ModelItemListFilter::prepareFilterArray($slider_range, $badchars, 1, 0, 0, $myfields, $i, $range);
+                                        $sql = self::prepareFilterArray($slider_range, $badchars, 1, 0, 0, $myfields, $i, $range);
                                         if (!empty($sql)) {
                                                 $query .= $sql;
                                         }
@@ -1656,7 +1656,7 @@ class K2ModelItemlistfilter extends K2Model {
 								$flabel = JRequest::getVar('flabel');
 								if($flabel) {
 									$flabel = implode(" ", $flabel);
-									$query .= K2ModelItemListFilter::prepareSearch($flabel);
+									$query .= self::prepareSearch($flabel);
 								}
 							
 								///tag filter
@@ -1969,7 +1969,7 @@ class K2ModelItemlistfilter extends K2Model {
 												$sql = @implode(',', $searchIDs);
 												$query .= " AND i.catid IN ({$sql})";
 										} else {
- 											$result = K2ModelItemListFilter::getCategoryTree($searchIDs);
+ 											$result = self::getCategoryTree($searchIDs);
 												if (count($result)) {
 														$sql = @implode(',', $result);
 														$query .= " AND i.catid IN ({$sql})";
@@ -1992,7 +1992,6 @@ class K2ModelItemlistfilter extends K2Model {
 				return $result;
 		}
 		
-	
 		function prepareSearch($search) {
 			jimport('joomla.filesystem.file');
 			$db = JFactory::getDBO();
@@ -2384,10 +2383,8 @@ class K2ModelItemlistfilter extends K2Model {
 
 				return $rows;
 		}
-		
-
-		
-		function getCategoryTree($categories){
+				
+		public static function getCategoryTree($categories){
 			$mainframe = &JFactory::getApplication();
 			$db = &JFactory::getDBO();
 			$user = &JFactory::getUser();
@@ -2693,7 +2690,7 @@ class K2ModelItemlistfilter extends K2Model {
 		$db = JFactory::getDBO();
 		require_once (JPATH_SITE.DS.'modules'.DS.'mod_k2_filter'.DS.'helper.php');
 		$moduleParams = modK2FilterHelper::getModuleParams(JRequest::getInt("moduleId"));
-		$authors_list = K2ModelItemlistfilter::getAuthors($moduleParams);
+		$authors_list = self::getAuthors($moduleParams);
 		$query = '';
 		
 		//tags

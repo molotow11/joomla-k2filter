@@ -73,7 +73,7 @@ class K2ViewItemlist extends K2View {
 						$menus = $application->getMenu();
 						$menu = $menus->getActive();
 						if($menu) {
-							if(count($menu->params->get('categories'))) {
+							if(count((array)$menu->params->get('categories'))) {
 								$category_id = $menu->params->get('categories');
 								$category_id = $category_id[0];
 							}
@@ -207,7 +207,7 @@ class K2ViewItemlist extends K2View {
 						// Category children
 						$ordering = $params->get('subCatOrdering');
 						$children = $model->getCategoryFirstChildren($category_id, $ordering);
-						if (count($children)) {
+						if (count((array)$children)) {
 							foreach ($children as $child) {
 								if ($params->get('subCatTitleItemCounter')) {
 									if($model->getTotal($child->id)) {
