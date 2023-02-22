@@ -190,7 +190,7 @@ class K2ViewItemlist extends K2View {
 						$category->description = $category->text;
 
 						// Category K2 plugins
-						if(!$category->event) {
+						if(!$category->event || is_null($category->event)) {
 							$category->event = new \stdClass();
 						}
 						$category->event->K2CategoryDisplay = '';
