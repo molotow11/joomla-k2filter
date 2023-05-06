@@ -334,7 +334,7 @@ class K2ViewItemlist extends K2View {
 		// Set limit for model
 		if (!$limit) $limit = 10;
 		
-		if(JRequest::getInt("flimit") != "") {
+		if((int)JRequest::getInt("flimit") > 0) {
 			$limit = JRequest::getInt("flimit");
 			if ($filter_template == 2) {
 				//$params->set('num_primary_items', $limit);
