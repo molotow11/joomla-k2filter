@@ -166,6 +166,9 @@ if($connected_fields != "") {
 		}
 	}
 }
+else {
+	$connected_fields = array();
+}
 
 require (JModuleHelper::getLayoutPath('mod_k2_filter', $getTemplate.DS.'template'));
 
